@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анастасія — фотограф</title>
+<meta name="description" content="Анастасія — фотограф. Індивідуальні, Love Story та сімейні зйомки.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Forum&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Katherine';src:url('fonts/Katherineplus.ttf') format('truetype');font-display:swap}
+/*
+  ====== ЩО ЗМІНИТИ ======
+  1. Фото: покладіть файли в папку images/ поруч з index.html
+     (hero.jpg, about1.jpg, about2.jpg, p1.jpg ... p5.jpg).
+     Поки фото немає — показуються бордові заглушки.
+  2. Тексти, ціни, умови — просто правте нижче в HTML.
+  3. Telegram / WhatsApp — замініть посилання в блоці "Контакти".
+*/
+:root{--red:#8b0000;--red-d:#6e0000;--paper:#f1f0ee;--ink:#1c1416;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;color:var(--ink);background:#fff;line-height:1.5;font-weight:300}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+h1,h2{font-family:'Forum',serif;font-weight:400;color:var(--red)}
+.wrap{max-width:560px;margin:0 auto;padding:0 24px}
+@media(min-width:900px){.wrap{max-width:960px}}
+
+/* кнопки */
+.btn{border-radius:14px;display:block;text-align:center;padding:14px 18px;border:1px solid var(--red);font-size:16px;letter-spacing:.02em;transition:background .2s,color .2s}
+.btn.fill{background:var(--red);color:#fff}
+.btn.fill:hover{background:var(--red-d)}
+.btn.line{color:var(--red);background:transparent}
+.btn.line:hover{background:var(--red);color:#fff}
+.btn.white{background:#fff;color:var(--red);border-color:#fff}
+.btn.white:hover{background:transparent;color:#fff}
+
+/* шапка */
+header{position:absolute;top:0;right:0;z-index:5;padding:22px 24px}
+#burger{background:none;border:0;cursor:pointer;width:36px;height:30px;display:flex;flex-direction:column;justify-content:space-between;padding:4px 0}
+#burger span{display:block;height:4px;background:var(--red)}
+nav{position:fixed;inset:0;background:var(--red);z-index:10;display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px;font-family:'Forum',serif;font-size:32px;color:#fff}
+nav.open{display:flex}
+nav button{position:absolute;top:20px;right:26px;background:none;border:0;color:#fff;font-size:40px;cursor:pointer}
+
+/* hero */
+.hero{text-align:center;padding-top:70px;background:#f4f4f5}
+.hero .wrap{position:relative;z-index:3}
+.logo{font-family:'Katherine','Forum',cursive;font-size:clamp(46px,13vw,84px);line-height:1;color:var(--ink)}
+.role{font-family:'Forum',serif;color:var(--red);font-size:clamp(24px,6vw,34px);letter-spacing:.04em;margin-top:6px}
+.hero-wrap{position:relative;margin-top:44px;--ph:clamp(140px,24vw,200px)}
+.paper{position:absolute;left:0;width:100%;height:var(--ph);top:calc(var(--ph) * -.7);z-index:2;object-fit:cover;object-position:center bottom;pointer-events:none;display:block}
+.hero-photo{position:relative;z-index:1;min-height:660px;background:#222 center/cover}
+.hero-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.65))}
+.hero-body{position:absolute;left:0;right:0;bottom:0;padding:0 24px 40px;display:grid;gap:12px;max-width:560px;margin:0 auto;z-index:1}
+.hero-body p{color:#fff;font-size:20px;margin-bottom:8px}
+
+/* про мене */
+.about{padding:80px 0}
+.about h2,.section-title{font-size:clamp(34px,8vw,46px);text-align:center;margin-bottom:36px}
+.about-grid{display:grid;gap:34px;align-items:center}
+.sheet{background:var(--paper);padding:34px 30px 34px 44px;box-shadow:0 6px 24px rgba(0,0,0,.12);transform:rotate(-1.5deg);border-left:3px dotted #bbb;font-size:18px}
+.sheet p+p{margin-top:16px}
+.sr{position:absolute;left:-9999px}
+.sign{line-height:1.15;font-family:'Katherine','Forum',cursive;color:var(--red);font-size:36px;margin-top:14px}
+.polaroids{display:flex;justify-content:center;gap:0;min-height:230px}
+.pol{border-radius:4px;width:44%;max-width:210px;background:#fff;padding:10px 10px 34px;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.pol:first-child{transform:rotate(-6deg) translateY(18px)}
+.pol:last-child{transform:rotate(5deg);margin-left:-8%}
+.ph{width:100%;aspect-ratio:1/1.1;background:#2a2a2a center/cover}
+@media(min-width:900px){.about-grid{grid-template-columns:1fr 1fr}}
+
+/* портфоліо */
+:root{--th:clamp(90px,15vw,160px)}
+.tear{position:relative;z-index:2;height:var(--th);margin-bottom:calc(var(--th) * -.45);line-height:0;pointer-events:none}
+.tear img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;-webkit-mask-image:linear-gradient(#000 52%,transparent 100%);mask-image:linear-gradient(#000 52%,transparent 100%)}
+.portfolio{background:var(--red) url(images/paper-red-tile.webp) center top/clamp(600px,100vw,1400px) auto repeat;color:#fff;padding:calc(var(--th) * .45 + 4px) 0 0;text-align:center;position:relative}
+.portfolio h2{color:#fff;font-size:clamp(30px,7vw,40px);margin-bottom:6px}
+.strip{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px 28px 90px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.print{flex:0 0 min(72%,290px);background:#fff;padding:10px 10px 38px;border-radius:6px;box-shadow:0 18px 34px -8px rgba(0,0,0,.38);position:relative;scroll-snap-align:center}
+.print:nth-child(odd){transform:rotate(-3deg)}
+.print:nth-child(even){transform:rotate(2.5deg) translateY(18px)}
+.print:nth-child(3n){transform:rotate(1.5deg)}
+.print::before{content:"";position:absolute;top:-13px;left:50%;width:86px;height:26px;margin-left:-43px;background:rgba(236,222,206,.85);transform:rotate(-4deg);border-radius:3px;z-index:1}
+.print img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border-radius:3px;background:#4a0000}
+.hint{padding:0 0 70px;margin-top:-50px;font-size:15px;position:relative}
+@media(min-width:900px){.strip{flex-wrap:wrap;justify-content:center;overflow:visible;gap:56px 48px;max-width:1100px;margin:0 auto;padding:50px 28px 90px}.print{flex:0 0 280px}.hint{display:none}}
+
+/* послуги з зубчастим краєм */
+.services{background:var(--paper);padding:20px 0 70px;position:relative;
+  -webkit-mask:radial-gradient(circle 13px at 13px 0,#0000 98%,#000) 0 0/52px 51% repeat-x top,linear-gradient(#000,#000) 0 26px/100% calc(100% - 52px) no-repeat,radial-gradient(circle 13px at 13px 100%,#0000 98%,#000) 0 100%/52px 51% repeat-x;
+  mask:radial-gradient(circle 13px at 13px 0,#0000 98%,#000) 0 0/52px 51% repeat-x top,linear-gradient(#000,#000) 0 26px/100% calc(100% - 52px) no-repeat,radial-gradient(circle 13px at 13px 100%,#0000 98%,#000) 0 100%/52px 51% repeat-x}
+.services .section-title{padding-top:40px}
+.svc-list{display:grid;gap:34px;text-align:center}
+.svc h3{font-family:'Forum',serif;font-weight:400;font-size:24px;text-transform:uppercase;letter-spacing:.04em}
+.svc p{margin:6px 0 14px;font-size:16px}
+.price{font-family:'Katherine','Forum',cursive;font-size:34px;color:var(--red);line-height:1.1;margin:0 0 14px}
+.svc-extra{border-radius:12px;display:none;font-size:15px;margin:-4px 0 14px;padding:14px 16px;background:#fff;border:1px solid #ddd;text-align:left}
+.svc-extra ul{padding-left:18px;display:grid;gap:6px}
+.svc-extra .term{margin:12px 0 0;font-size:15px}
+.svc-extra.open{display:block}
+.svc-cta{margin-top:40px}
+@media(min-width:900px){.svc-list{grid-template-columns:repeat(3,1fr);gap:30px}.svc-cta{max-width:420px;margin:44px auto 0}}
+
+/* умови */
+.terms{padding:70px 0;background:#3a0000;color:#fff}
+.terms .section-title{color:#fff;font-family:'Katherine','Forum',cursive;font-size:clamp(44px,10vw,60px)}
+.tlist{list-style:disc;max-width:560px;margin:0 auto;padding-left:22px;display:grid;gap:18px;font-size:17px}
+.tlist li::marker{color:#c98a8a}
+
+/* контакти */
+.contacts{background:var(--red);color:#fff;padding:60px 0 64px;text-align:center}
+.contacts h2{color:#fff;font-size:clamp(34px,8vw,46px);margin-bottom:30px}
+.contacts .wrap{max-width:560px;display:grid;gap:14px}
+.contacts .btn{border-color:#fff;color:#fff}
+.contacts .btn:hover{background:#fff;color:var(--red)}
+footer{background:var(--red-d);color:#e9c8c8;text-align:center;font-size:13px;padding:14px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header><button id="burger" aria-label="Відкрити меню"><span></span><span></span><span></span></button></header>
+<nav id="menu" aria-label="Меню">
+  <button id="close" aria-label="Закрити меню">×</button>
+  <a href="#about">Про мене</a><a href="#portfolio">Портфоліо</a><a href="#services">Послуги</a><a href="#terms">Умови</a><a href="#contacts">Контакти</a>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="logo" aria-label="Анастасія">Анастасiя</div>
+    <div class="role">PHOTOGRAPHER</div>
+  </div>
+  <div class="hero-wrap">
+  <img class="paper" src="images/paper-top.webp" alt="">
+  <div class="hero-photo" style="background-image:url('images/hero.jpg');background-position:50% 28%">
+    <div class="hero-body">
+      <p>Зупиню мить ♡</p>
+      <a class="btn fill" href="#contacts">Записатися на зйомку</a>
+      <a class="btn white" href="#services">Перейти до послуг</a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <h2>Про мене</h2>
+    <div class="about-grid">
+      <div class="sheet">
+        <p>Привіт! Я обожнюю творчість.</p>
+        <p>Для мене зйомка — це мистецтво, і я готова творити разом із тобою. Люблю кадри, в яких є життя та справжні емоції 🤍</p>
+        <div class="sign"><span class="sr">Анастасія</span><span aria-hidden="true">з любов'ю,<br>Анастасiя</span></div>
+      </div>
+      <div class="polaroids">
+        <div class="pol"><div class="ph" style="background-image:url('images/about1.jpg');background-position:50% 70%"></div></div>
+        <div class="pol"><div class="ph" style="background-image:url('images/about2.jpg');background-position:55% 62%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tear" aria-hidden="true"><img src="images/paper-red.webp" alt=""></div>
+<section class="portfolio" id="portfolio">
+  <h2>Портфоліо</h2>
+  <div class="strip">
+    <figure class="print"><img src="images/p01.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p04.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p15.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p05.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p02.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p06.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p16.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p07.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p03.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p13.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p08.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p14.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p09.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p10.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p11.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+    <figure class="print"><img src="images/p12.webp" alt="Фото з портфоліо" loading="lazy" decoding="async"></figure>
+  </div>
+  <p class="hint">Гортай →</p>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2 class="section-title">Послуги</h2>
+    <div class="svc-list">
+      <div class="svc">
+        <h3>Індивідуальна зйомка</h3>
+        <p>Щоб зберегти ваші спогади та справжні емоції. Також підходить для портфоліо, особистого бренду, оновлення контенту або просто для себе</p>
+        <div class="price">1500 грн</div>
+        <div class="svc-extra"><ul><li>1 година</li><li>до 2х образів</li><li>допомога у виборі локації, позування, образу та реквізиту</li><li>60-80 вдалих фото в моїй обробці та легкій ретуші</li><li>термін видачі: до 10 днів</li></ul></div>
+        <button class="btn line more" style="width:100%;background:none;cursor:pointer;font-family:inherit">Детальніше</button>
+      </div>
+      <div class="svc">
+        <h3>Love Story / Сімейна</h3>
+        <p>Для пар, які хочуть зберегти важливий період своєї історії, та для теплих кадрів про вашу сім'ю</p>
+        <div class="price">2000 грн</div>
+        <div class="svc-extra"><ul><li>1 година</li><li>до 2х образів</li><li>допомога у виборі локації, позування, образу та реквізиту</li><li>70-100 вдалих фото в моїй обробці та легкій ретуші</li><li>термін видачі: до 10 днів</li></ul></div>
+        <button class="btn line more" style="width:100%;background:none;cursor:pointer;font-family:inherit">Детальніше</button>
+      </div>
+      <div class="svc">
+        <h3>Весільна зйомка<br>(церемонія + прогулянка)</h3>
+        <p>Фотозйомка у день вашого весілля</p>
+        <div class="price">4500 грн</div>
+        <div class="svc-extra"><ul><li>2-2.5 години</li><li>допомога у виборі локації, позування, образу та реквізиту</li><li>130-160 вдалих фото в моїй обробці та легкій ретуші</li><li>термін видачі: до 10 днів</li></ul></div>
+        <button class="btn line more" style="width:100%;background:none;cursor:pointer;font-family:inherit">Детальніше</button>
+      </div>
+    </div>
+    <a class="btn fill svc-cta" href="#contacts">Записатися на зйомку</a>
+  </div>
+</section>
+
+<section class="terms" id="terms">
+  <div class="wrap">
+    <h2 class="section-title">Умови</h2>
+    <ul class="tlist">
+        <li>Я залишаю за собою право публікувати кадри зі зйомки</li>
+        <li>Запис відбувається по передплаті 300 грн. Решта суми сплачується відразу після зйомки</li>
+        <li>Студія або платні локації <b>не</b> входять у вартість зйомки</li>
+        <li>Ви отримуєте вдалі кадри (кількість залежить від обраної послуги) з моєю обробкою та легкою ретушшю. Якщо бажаєте отримати оригінали — попередьте завчасно</li>
+        <li>В обробку входить: кольорокорекція, робота з фоном, натуральна чистка шкіри. Під час обробки я не змінюю риси обличчя або фігуру</li>
+        <li>Перед зйомкою ми обговорюємо ваш образ для неї, підбираємо одяг. Результат фото та обробки сильно залежить від вибору вашого одягу</li>
+        <li>Якщо у вас є референси для зйомки — надішліть мені, щоб я добре розуміла ваші побажання</li>
+        <li>Якщо зйомка відбувається за межами міста — клієнт сплачує трансфер фотографу туди та назад або забирає на власному авто</li>
+        <li>Зйомка починається у домовлений нами час. При запізненні можна подовжити час за додаткову оплату або провести зйомку, врахувавши час вашого запізнення</li>
+        <li>У разі непередбачуваної ситуації (погана погода / сімейні обставини / погане самопочуття) зйомку можна перенести на інший день (1 раз). Про це бажано попередити завчасно</li>
+        <li>При скасуванні Вами зйомки передплата не повертається</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contacts" id="contacts">
+  <div class="wrap">
+    <h2>Контакти</h2>
+    <a class="btn" href="https://www.instagram.com/sia.photoshoot" target="_blank" rel="noopener">INSTAGRAM</a>
+  </div>
+</section>
+<footer>© <span id="y"></span> Sia Photoshoot</footer>
+
+<script>
+const m=document.getElementById('menu');
+document.getElementById('burger').onclick=()=>m.classList.add('open');
+document.getElementById('close').onclick=()=>m.classList.remove('open');
+m.querySelectorAll('a').forEach(a=>a.onclick=()=>m.classList.remove('open'));
+document.querySelectorAll('.more').forEach(b=>b.onclick=()=>{
+  const e=b.previousElementSibling;const o=e.classList.toggle('open');
+  b.textContent=o?'Згорнути':'Детальніше';
+});
+document.getElementById('y').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
